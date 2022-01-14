@@ -1,9 +1,12 @@
-const express= require("express");
-const router=require("./router/router")
-const config=require("dotenv")
+const express = require("express");
+const router = require("./router/router");
+const env = require("dotenv").config();
+const app = express();
 
+app.use(express.json());
+//routing users
+app.use("/api/users", router);
 
-app=express();
-app.use(router)
-
-app.listen(process.env.PORT,()=>console.log("Server is running at 5000"))
+app.listen(process.env.PORT, () =>
+  console.log(`Server is running at ${process.env.PORT}`)
+);
